@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">FindFam</string>
-    <string name="mitToken">pk.eyJ1IjoiY2VzYXJoZXJuYW5kZXpjaXNuZXJvcyIsImEiOiJja2t4MWpiZDQxdXNyMnBxbWc0aGo3aHhiIn0.V3Glz-2yaBdRFbvgvi0lOw</string>
+    <string name="miToken">pk.eyJ1IjoiY2VzYXJoZXJuYW5kZXpjaXNuZXJvcyIsImEiOiJja2t4MWpiZDQxdXNyMnBxbWc0aGo3aHhiIn0.V3Glz-2yaBdRFbvgvi0lOw</string>
 </resources>

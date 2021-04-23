@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Vibrator
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,6 +16,35 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
+        //Si el usuario ya se metio una vez y se registro debemos buscar o invocar el archivo
+        //de preferencias compartidas y buscar al nombre de usuario y si existe
+        //pues ocultamos el boton de empezar ahora, porque ya no hay necesidad de registro.
+        //Aqui vamos a la inversa, leeremos el archivito de preferencias compartidas
+        val preferencias=applicationContext?.getSharedPreferences("AMIGOS", Context.MODE_PRIVATE)?:return
+        //Para leer informacion se hace directamente con el objeto preferencias y no el edit que es guardar
+        with(preferencias){
+         val valorNombre =  getString("nombre", null)
+            if(!valorNombre.isNullOrEmpty()){
+                //Esta condicion si se cumple quiere decir que ya te registraste, que ya tiene guardado el nombre
+                    //Y ademas que ya no tiene que estar visible el boton donde te registras
+                Toast.makeText(applicationContext, "Bienvenido de nuevo ${valorNombre}", Toast.LENGTH_LONG).show()
+                //Ocultamos el boton de registro
+                empezar.visibility=View.INVISIBLE
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         // Vamos a poner un codigo gracioso, vamos aponer el vibrador!!!
         var vi = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         vi.vibrate(3000)
@@ -37,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
             //La redireccionamos
 
-            startActivity( Intent(this, registroactivity::class.java))
+            startActivity( Intent(this, Registroactivity::class.java))
 
 
         }
